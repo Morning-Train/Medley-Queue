@@ -1,0 +1,38 @@
+{
+    "name": "morningmedley/queue",
+    "description": "Illuminate Queue for use in WordPress",
+    "keywords": [
+        "wordpress",
+        "morningtrain",
+        "morningmedley",
+        "queue"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mathias Munk",
+            "email": "mh@morningtrain.dk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MorningMedley\\Queue\\": "src/",
+            "Illuminate\\": "illuminate/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "illuminate/container": "^11.23",
+        "illuminate/support": "^11.23",
+        "illuminate/queue": "^11.23",
+        "illuminate/console": "^11.23"
+    },
+    "extra": {
+        "morningmedley": {
+            "providers": [
+                "MorningMedley\\Queue\\QueueServiceProvider",
+                "Illuminate\\Bus\\BusServiceProvider"
+            ]
+        }
+    }
+}
