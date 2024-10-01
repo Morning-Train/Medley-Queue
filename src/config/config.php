@@ -7,4 +7,9 @@
             'queue' => 'default',
         ],
     ],
+    'failed' => [
+        'driver' => env('QUEUE_FAILED_DRIVER', 'database'),
+//        'database' => 'database',
+        'table' => 'failed_jobs',
+    ],
 ];
