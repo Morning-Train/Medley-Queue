@@ -4,11 +4,15 @@ namespace MorningMedley\Queue;
 
 use Illuminate\Bus\BusServiceProvider;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Queue\Console\FailedTableCommand;
+use Illuminate\Queue\Console\RestartCommand;
+use Illuminate\Queue\Console\RetryCommand;
 use Illuminate\Queue\Console\TableCommand;
 use Illuminate\Queue\Console\WorkCommand;
 use Illuminate\Queue\Console\WorkCommand as QueueWorkCommand;
 use Illuminate\Support\Facades\Artisan;
 use MorningMedley\Queue\Console\JobMakeCommand;
+use Illuminate\Queue\Console\ListFailedCommand;
 
 class QueueServiceProvider extends \Illuminate\Queue\QueueServiceProvider
 {
@@ -27,6 +31,8 @@ class QueueServiceProvider extends \Illuminate\Queue\QueueServiceProvider
         $this->registerQueueTableCommand();
         $this->registerJobMakeCommand();
         $this->registerQueueWorkCommand();
+        $this->registerQueueFailedTableCommand();
+        $this->registerQueueRestartCommand();
     }
 
     public function boot()
@@ -36,6 +42,10 @@ class QueueServiceProvider extends \Illuminate\Queue\QueueServiceProvider
             TableCommand::class,
             JobMakeCommand::class,
             WorkCommand::class,
+            FailedTableCommand::class,
+            RetryCommand::class,
+            RestartCommand::class,
+            ListFailedCommand::class,
         ]);
     }
 
@@ -57,6 +67,20 @@ class QueueServiceProvider extends \Illuminate\Queue\QueueServiceProvider
     {
         $this->app->singleton(QueueWorkCommand::class, function ($app) {
             return new QueueWorkCommand($app['queue.worker'], $app['cache.store']);
+        });
+    }
+
+    protected function registerQueueFailedTableCommand()
+    {
+        $this->app->singleton(FailedTableCommand::class, function ($app) {
+            return new FailedTableCommand($app['files']);
+        });
+    }
+
+    protected function registerQueueRestartCommand()
+    {
+        $this->app->singleton(RestartCommand::class, function ($app) {
+            return new RestartCommand($app['cache.store']);
         });
     }
 
