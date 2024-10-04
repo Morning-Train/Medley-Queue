@@ -9,7 +9,7 @@
     ],
     'failed' => [
         'driver' => env('QUEUE_FAILED_DRIVER', 'database'),
-//        'database' => 'database',
+        'database' => 'wpdb',
         'table' => 'failed_jobs',
     ],
 ];

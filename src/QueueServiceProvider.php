@@ -4,6 +4,7 @@ namespace MorningMedley\Queue;
 
 use Illuminate\Bus\BusServiceProvider;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Queue\Console\ClearCommand;
 use Illuminate\Queue\Console\FailedTableCommand;
 use Illuminate\Queue\Console\RestartCommand;
 use Illuminate\Queue\Console\RetryCommand;
@@ -46,6 +47,7 @@ class QueueServiceProvider extends \Illuminate\Queue\QueueServiceProvider
             RetryCommand::class,
             RestartCommand::class,
             ListFailedCommand::class,
+            ClearCommand::class,
         ]);
     }
 
