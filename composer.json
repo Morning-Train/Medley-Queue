@@ -22,8 +22,8 @@
     },
     "require": {
         "php": "^8.2",
-        "morningmedley/database": "^0.2",
-        "morningmedley/application": "^0.2",
+        "morningmedley/database": "^0.3",
+        "morningmedley/application": "^0.3",
         "illuminate/queue": "^12.3"
     },
     "extra": {
