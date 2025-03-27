@@ -22,11 +22,9 @@
     },
     "require": {
         "php": "^8.2",
-        "morningmedley/database": "^0.2",
-        "illuminate/container": "^11.23",
-        "illuminate/support": "^11.23",
-        "illuminate/queue": "^11.23",
-        "illuminate/console": "^11.23"
+        "morningmedley/database": "^0.3",
+        "morningmedley/application": "^0.3",
+        "illuminate/queue": "^12.3"
     },
     "extra": {
         "morningmedley": {
