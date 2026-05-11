@@ -8,7 +8,7 @@
         ],
     ],
     'failed' => [
-        'driver' => env('QUEUE_FAILED_DRIVER', 'database'),
+        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
         'database' => 'wpdb',
         'table' => 'failed_jobs',
     ],
